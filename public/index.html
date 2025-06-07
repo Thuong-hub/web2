@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ - Giày Bóng Đá</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #004d40, #00796b); color: #fff; }
+    header, footer { background: #00251a; text-align: center; padding: 1rem; }
+    nav { background: #003d33; display: flex; justify-content: center; gap: 1rem; padding: 0.75rem; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; }
+    .hero { background: url('https://images.unsplash.com/photo-1600051902542-5f0925f845e8') center/cover no-repeat; height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .hero-content { background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 10px; }
+    .btn { background: #00796b; color: #fff; padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; }
+    section { max-width: 1000px; margin: auto; padding: 2rem 1rem; text-align: center; }
+    .gallery-images { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .gallery-images img { width: 300px; height: 270px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.2s ease; }
+    .gallery-images img:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <header><h1>Giày Bóng Đá Chính Hãng</h1></header>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="football.html">Sản phẩm</a>
+    <a href="cart.html">Giỏ hàng</a>
+    <a href="support.html">Hỗ trợ</a>
+    <a href="history.html">Lịch sử đơn hàng</a>
+  </nav>
+
+  <!-- Thanh tìm kiếm -->
+<section style="background: #004d40; padding: 1.5rem 1rem; text-align: center;">
+  <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." style="padding: 0.5rem; width: 60%; border-radius: 5px; border: none;">
+  <button onclick="searchProduct()" class="btn" style="margin-left: 0.5rem;">Tìm kiếm</button>
+</section>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Khám phá bộ sưu tập mới nhất</h2>
+      <p>Chất lượng, phong cách và hiệu suất – tất cả trong một đôi giày.</p>
+      <a href="football.html" class="btn">Xem sản phẩm</a>
+    </div>
+  </section>
+  <section><h2>Về cửa hàng</h2><p>Chuyên cung cấp giày bóng đá chất lượng cao từ Nike, Adidas, Puma,... cho mọi cấp độ.</p></section>
+  <section><h2>Sản phẩm nổi bật</h2>
+    <div class="gallery-images">
+      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ0k_QwgVfS_WvNkrZRxXBsQ3o-Bm5-zoPaByFWFKxDcHEVuUzZpwDkoQ_mHakQMUBfgJ9LdmySi1eqXrwQgk11iq8j1oa4yPA1Yyl8N2yb6C-8_nnIGPkxqZBdVd3OjSOXUUj6DA&usqp=CAc" alt="Nike Mercurial" onclick="goToProduct('Nike Mercurial')">
+      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT0uiJTCMauRN7-1VjXQ-Fa3n_KJKLAwdpBCY8hEgg8dKkvrCjK-LbuxAkiqdYC56alU6OtqCw1iTAgHB9cmqQ2lMVCFcN_BnH5_BNrEAHIlNmflGR90msu&usqp=CAc" alt="Adidas Predator" onclick="goToProduct('Adidas Predator')">
+      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSv4TYPozOY5Ebhu31hfbhAfknMxmHN6ePouWZpFe6IZf0qSg3nt4z3fGUvrC0MaBIlZoa6SeCGA6ZrReOKBbhX-wgJtksTGNmGqR9SM9dZpN13_Nhhks7wJPwvxtOrFhQIpEPv0g&usqp=CAc" alt="Puma Future" onclick="goToProduct('Puma Future')">
+    </div>
+  </section>
+  <section><h2>Khách hàng nói gì</h2>
+    <blockquote>“Giày cực êm và đẹp, giao hàng nhanh!” – Minh Quang</blockquote>
+    <blockquote>“Mình đã đá 3 trận liên tục, cảm giác chân rất tốt.” – Tuấn Anh</blockquote>
+  </section>
+  <section><h2>Liên hệ</h2>
+    <p>📞 0796 951 612 &nbsp;&nbsp; ✉️ giaybongda@gmail.vn</p>
+  </section>
+  <footer><p>&copy; 2025 Giày Bóng Đá Chính Hãng. All rights reserved.</p></footer>
+
+  <script>
+    function goToProduct(name) {
+      const encoded = encodeURIComponent(name);
+      window.location.href = `football.html?name=${encoded}`;
+    }
+  </script>
+
+  <script>
+  function goToProduct(name) {
+    const encoded = encodeURIComponent(name);
+    window.location.href = `football.html?name=${encoded}`;
+  }
+
+  function searchProduct() {
+    const input = document.getElementById("searchInput").value.trim();
+    if (input) {
+      const encoded = encodeURIComponent(input);
+      window.location.href = `football.html?search=${encoded}`;
+    } else {
+      alert("Vui lòng nhập tên sản phẩm để tìm kiếm.");
+    }
+  }
+</script>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+const keyword = urlParams.get("search");
+
+if (keyword) {
+  const filteredShoes = footballShoes.filter(shoe =>
+    shoe.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+  renderShoes(filteredShoes);
+} else {
+  renderShoes(footballShoes);
+}
+
+</script>
+</body>
+</html>

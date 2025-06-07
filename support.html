@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hỗ Trợ Khách Hàng</title>
+  <link rel="stylesheet" href="support.css">
+</head>
+<body>
+  <header>
+    <h1>Hỗ Trợ Khách Hàng</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="cart.html">Giỏ hàng</a>
+      <a href="support.html">Hỗ trợ</a>
+      <a href="history.html">Lịch sử đơn hàng</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="support-form">
+      <h2>Gửi yêu cầu hỗ trợ</h2>
+      <form id="supportForm">
+        <label for="name">Họ tên:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Nội dung:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Gửi</button>
+      </form>
+      <div id="response"></div>
+    </section>
+  </main>
+
+  <script src="support.js"></script>
+</body>
+</html>

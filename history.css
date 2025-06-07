@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+header, footer {
+  background: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  min-height: 60vh;
+}
+
+#orders-list .order {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+.order h3 {
+  margin: 0;
+  color: #00796b;
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.order-item img {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
