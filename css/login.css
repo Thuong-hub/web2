@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: url('../picture/hinhanh.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  width: 360px;
+  color: #fff;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 26px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  color: #eee;
+  font-size: 17px;
+  font-weight: bold; 
+}
+
+.input-group input {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  outline: none;
+  font-size: 15px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+  width: 100%;
+  color: #ddd;
+}
+
+.options a {
+  text-decoration: none;
+  color: #90cdf4;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+p a {
+  color: #90cdf4;
+  text-decoration: none;
+}

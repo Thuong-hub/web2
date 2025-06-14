@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="background">
+    <div class="login-container">
+      <h2>Đăng ký tài khoản</h2>
+      <form onsubmit="return handleRegister(event)">
+        <div class="input-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" placeholder="Tên đăng nhập" required />
+        </div>
+        <div class="input-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="text" id="phone" placeholder="Số điện thoại" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" placeholder="Mật khẩu" required />
+        </div>
+        <button type="submit" class="btn">Đăng ký</button>
+        <p id="registerMessage" style="color: red; margin-top: 10px;"></p>
+        <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function handleRegister(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("registerMessage");
+
+      let users = JSON.parse(localStorage.getItem("users")) || {};
+
+      // Kiểm tra tên đăng nhập đã tồn tại
+      if (users[username]) {
+        msg.textContent = "Tên đăng nhập đã tồn tại!";
+        return;
+      }
+
+      // Kiểm tra email đã được sử dụng
+      for (let key in users) {
+        if (users[key].email === email) {
+          msg.textContent = "Email đã được sử dụng!";
+          return;
+        }
+      }
+
+      // Lưu thông tin người dùng
+      users[username] = {
+        username,
+        phone,
+        email,
+        password
+      };
+
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Đăng ký thành công!");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

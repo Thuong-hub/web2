@@ -69,10 +69,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function checkout() {
+async function checkout() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+  const {
+    data: { user },
+    error: authError
+  } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    alert("Bạn cần đăng nhập trước khi thanh toán.");
+    return;
+  }
+
+  // 2. Gửi đơn hàng vào Supabase
+  const { error: insertError } = await supabase
+    .from('orders')
+    .insert([{
+      user_id: user.id,
+      items: cart,
+      total_price: total,
+      created_at: new Date().toISOString()
+    }]);
+
+  if (insertError) {
+    console.error("Lỗi khi gửi đơn hàng lên Supabase:", insertError);
+    alert("Có lỗi khi gửi đơn hàng. Vui lòng thử lại sau.");
+    return;
+  }
 
   const newOrder = {
     date: new Date().toLocaleString(),

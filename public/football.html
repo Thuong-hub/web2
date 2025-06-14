@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sản Phẩm Giày Bóng Đá</title>
-  <link rel="stylesheet" href="shoes.css">
+  <link rel="stylesheet" href="css/shoes.css">
 </head>
 <body>
   <header>
@@ -16,13 +16,25 @@
       <a href="history.html">Lịch sử đơn hàng</a>
     </nav>
   </header>
+  
+  <div id="search-bar" style="text-align: center; margin-top: 1rem;">
+  <input type="text" id="search-input" placeholder="Tìm kiếm theo tên giày..." style="padding: 0.5rem; width: 250px; border-radius: 5px; border: 1px solid #ccc;" />
+  <button onclick="handleSearch()" style="padding: 0.5rem 1rem; border: none; background-color: #00796b; color: white; border-radius: 5px; cursor: pointer;">Tìm kiếm</button>
+</div>
+
+<section>
+  <h2 style="text-align:center;">Danh sách sản phẩm</h2>
+  <div id="product-list" style="display:flex; flex-wrap:wrap; justify-content:center;"></div>
+</section>
 
   <main>
     <section class="shoes-container" id="shoes-list">
       <!-- Sản phẩm sẽ được hiển thị tại đây bằng JavaScript -->
     </section>
   </main>
-
-  <script src="shoes.js"></script>
+<script>
+  
+</script>
+  <script src="js/shoes.js"></script>
 </body>
 </html>

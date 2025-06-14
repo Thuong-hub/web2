@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="background">
+    <div class="login-container">
+      <h2>Đăng nhập</h2>
+      <form onsubmit="return handleRegister(event)"></form>
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="email ">Email hoặc tên Đăng nhập</label>
+          <input type="UsernameOrEmail" id="UsernameOrEmail" placeholder="Email " required />
+        </div>
+        <div class="input-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" placeholder="Mật khẩu" required />
+        </div>
+        <button type="submit" class="btn">Đăng nhập</button>
+        <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p>
+        <p id="loginMessage" style="color: yellow; margin-top: 10px;"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+   document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const input = document.getElementById("UsernameOrEmail").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const users = JSON.parse(localStorage.getItem("users")) || {};
+
+  let foundUser = null;
+
+  // Tìm user trùng tên đăng nhập hoặc email
+  for (let username in users) {
+    const user = users[username];
+    if ((username === input || user.email === input) && user.password === password) {
+      foundUser = username;
+      break;
+    }
+  }
+
+  if (foundUser) {
+    alert("Đăng nhập thành công!");
+    localStorage.setItem("loggedInUser", foundUser);
+    window.location.href = "index.html"; // Chuyển đến trang chủ
+  } else {
+    document.getElementById("loginMessage").textContent = "Tên đăng nhập hoặc mật khẩu không đúng!";
+  }
+});
+
+  </script>
+</body>
+</html>

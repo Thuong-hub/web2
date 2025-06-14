@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi tiết sản phẩm</title>
+  <link rel="stylesheet" href="css/shoes.css" />
+</head>
+<body>
+  <header>
+    <h1>Chi tiết sản phẩm</h1>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="football.html">Sản phẩm</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="support.html">Hỗ trợ</a>
+        <a href="history.html">Lịch sử đơn hàng</a>
+    </nav>
+  </header>
+
+  <main id="product-detail" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+    <!-- JavaScript sẽ render nội dung tại đây -->
+  </main>
+  
+  <script src="js/shoes.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const productId = parseInt(params.get("id"));
+      const product = footballShoes.find(p => p.id === productId);
+  
+      if (!product) {
+        document.getElementById("product-detail").innerHTML = "<p>Không tìm thấy sản phẩm.</p>";
+        return;
+      }
+  
+      document.getElementById("product-detail").innerHTML = `
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+          <img src="${product.img}" alt="${product.name}" style="width: 100%; max-width: 400px; border-radius: 10px;" />
+          <div style="flex: 1;">
+            <h2>${product.name}</h2>
+            <p style="font-size: 1.2rem; color: #00796b;">Giá: ${product.price.toLocaleString()} VND</p>
+            <p><strong>Thương hiệu:</strong> ${getBrand(product.name)}</p>
+            <p><strong>Mô tả:</strong> Giày được thiết kế chuyên biệt cho sân cỏ nhân tạo, mang lại cảm giác bóng tốt và độ bám cao. Chất liệu cao cấp, ôm chân, hỗ trợ tốc độ và kiểm soát bóng.</p>
+
+            <p><strong>Chọn size:</strong></p>
+            <div id="size-options" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem;">
+              ${[38, 39, 40, 41, 42].map(size => `
+                <button class="size-btn" data-size="${size}" style="
+                  padding: 10px 15px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  background-color: white;
+                  cursor: pointer;
+                  transition: background-color 0.3s, color 0.3s;
+                "
+                onmouseover="if (this.style.backgroundColor !== 'rgb(0, 121, 107)') this.style.backgroundColor='#00897b';"
+                onmouseout="if (this.style.backgroundColor !== 'rgb(0, 121, 107)') this.style.backgroundColor='white';"
+                >${size}</button>
+              `).join("")}
+            </div>
+            <input type="hidden" id="size" />
+
+            <p><strong>Số lượng:</strong></p>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+              <button type="button" onclick="changeQuantity(-1)" 
+                style="width: 35px; height: 35px; font-size: 20px; background-color: white; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#e0f2f1';"
+                onmouseout="this.style.backgroundColor='white';">−</button>
+              <span id="quantity" style="min-width: 30px; text-align: center; font-size: 16px;">1</span>
+              <button type="button" onclick="changeQuantity(1)" 
+                style="width: 35px; height: 35px; font-size: 20px; background-color: white; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#e0f2f1';"
+                onmouseout="this.style.backgroundColor='white';">+</button>
+            </div>
+
+            <button onclick="addToCartFromDetail(${product.id})" style="padding: 0.5rem 1rem; background-color: #00796b; color: white; border: none; border-radius: 5px; cursor: pointer;">Thêm vào giỏ</button>
+          </div>
+        </div>
+      `;
+    });
+
+    // Xử lý chọn size
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("size-btn")) {
+        document.querySelectorAll(".size-btn").forEach(btn => {
+          btn.style.backgroundColor = "white";
+          btn.style.color = "black";
+        });
+        e.target.style.backgroundColor = "#00796b";
+        e.target.style.color = "white";
+        document.getElementById("size").value = e.target.dataset.size;
+      }
+    });
+
+    function changeQuantity(delta) {
+      const quantityEl = document.getElementById("quantity");
+      let current = parseInt(quantityEl.textContent);
+      current += delta;
+      if (current < 1) current = 1;
+      quantityEl.textContent = current;
+    }
+
+    function addToCartFromDetail(id) {
+      const product = footballShoes.find(p => p.id === id);
+      const size = document.getElementById("size").value;
+      const quantity = parseInt(document.getElementById("quantity").textContent);
+
+      if (!size) {
+        alert("Vui lòng chọn size.");
+        return;
+      }
+
+      if (!quantity || quantity < 1) {
+        alert("Số lượng không hợp lệ.");
+        return;
+      }
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push({
+        ...product,
+        size,
+        quantity,
+        total: product.price * quantity
+      });
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "cart.html";
+    }
+
+    function getBrand(name) {
+      name = name.toLowerCase();
+      if (name.includes("nike")) return "Nike";
+      if (name.includes("adidas")) return "Adidas";
+      if (name.includes("puma")) return "Puma";
+      if (name.includes("mizuno")) return "Mizuno";
+      if (name.includes("new balance")) return "New Balance";
+      return "Không rõ";
+    }
+  </script>
+
+  <!-- Quay lại mua sắm -->
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="football.html" style="text-decoration: none; color: #00796b; font-weight: bold;">
+      ← Quay lại mua sắm
+    </a>
+  </div>
+</body>
+</html>

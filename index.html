@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang chủ - Giày Bóng Đá</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/index.css">
   <style>
-    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #004d40, #00796b); color: #fff; }
+    html, body {margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #004d40, #00796b); color: #fff; }
     header, footer { background: #00251a; text-align: center; padding: 1rem; }
     nav { background: #003d33; display: flex; justify-content: center; gap: 1rem; padding: 0.75rem; }
     nav a { color: #fff; text-decoration: none; font-weight: bold; }
@@ -20,22 +20,41 @@
   </style>
 </head>
 <body>
+<header>
+<table width="100%">
+<tr>
+<td width="20%" valign="top"><h4>ỦY BAN NHÂN DÂN TP.HCM<br>SỞ GIÁO DỤC VÀ ĐÀO TẠO<br>TRƯỜNG CAO ĐẲNG KINH TẾ TP.HCM<br><br><img src="picture/hce.jpg"style=" width: 150px; height: auto;"></td></h4>
+<div class="text">
+<td width="60%"></td>
+</div>
+<td width="20%" valign="top"><h3>GIẢNG VIÊN HƯỚNG DẪN<br>Th.s PHẠM ĐẰNG PHƯƠNG<br>Nguyễn Ngọc Thương<br>Phạm Minh Trọng<br>Lê Trọng Nhân</td></h3>
+</tr>
+</table>
+</header>
   <header><h1>Giày Bóng Đá Chính Hãng</h1></header>
-  <nav>
+ <nav>
+  <div class="nav-left">
     <a href="index.html">Trang chủ</a>
     <a href="football.html">Sản phẩm</a>
     <a href="cart.html">Giỏ hàng</a>
     <a href="support.html">Hỗ trợ</a>
     <a href="history.html">Lịch sử đơn hàng</a>
-  </nav>
+  </div>
+  <div class="nav-right">
+    <span id="userGreeting" style="display: none; font-weight: bold; margin-right: 10px;"></span>
+    <a href="login.html" id="loginLink">Đăng nhập</a>
+    <a href="#" id="logoutLink" style="display: none;">Đăng xuất</a>
+  </div>
+</nav>
 
-  <!-- Thanh tìm kiếm -->
-<section style="background: #004d40; padding: 1.5rem 1rem; text-align: center;">
-  <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." style="padding: 0.5rem; width: 60%; border-radius: 5px; border: none;">
-  <button onclick="searchProduct()" class="btn" style="margin-left: 0.5rem;">Tìm kiếm</button>
-</section>
+
 
   <section class="hero">
+    <video width="640" height="500" controls autoplay loop muted>
+  <source src="https://media.istockphoto.com/id/2203188604/vi/video/c%E1%BA%ADn-c%E1%BA%A3nh-%C4%91%E1%BB%99i-b%C3%B3ng-%C4%91%C3%A1-n%E1%BB%AF-chu%E1%BA%A9n-b%E1%BB%8B-trong-ph%C3%B2ng-thay-%C4%91%E1%BB%93-tr%C6%B0%E1%BB%9Bc-tr%E1%BA%ADn-%C4%91%E1%BA%A5u.mp4?s=mp4-640x640-is&k=20&c=ZJuC1OsYID2_bZ9zZSRbMjjEjxbLCKGCzmqnRN-XZgc=" type="video/mp4">
+</video>
+  </section>
+  <section>
     <div class="hero-content">
       <h2>Khám phá bộ sưu tập mới nhất</h2>
       <p>Chất lượng, phong cách và hiệu suất – tất cả trong một đôi giày.</p>
@@ -45,9 +64,9 @@
   <section><h2>Về cửa hàng</h2><p>Chuyên cung cấp giày bóng đá chất lượng cao từ Nike, Adidas, Puma,... cho mọi cấp độ.</p></section>
   <section><h2>Sản phẩm nổi bật</h2>
     <div class="gallery-images">
-      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ0k_QwgVfS_WvNkrZRxXBsQ3o-Bm5-zoPaByFWFKxDcHEVuUzZpwDkoQ_mHakQMUBfgJ9LdmySi1eqXrwQgk11iq8j1oa4yPA1Yyl8N2yb6C-8_nnIGPkxqZBdVd3OjSOXUUj6DA&usqp=CAc" alt="Nike Mercurial" onclick="goToProduct('Nike Mercurial')">
-      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT0uiJTCMauRN7-1VjXQ-Fa3n_KJKLAwdpBCY8hEgg8dKkvrCjK-LbuxAkiqdYC56alU6OtqCw1iTAgHB9cmqQ2lMVCFcN_BnH5_BNrEAHIlNmflGR90msu&usqp=CAc" alt="Adidas Predator" onclick="goToProduct('Adidas Predator')">
-      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSv4TYPozOY5Ebhu31hfbhAfknMxmHN6ePouWZpFe6IZf0qSg3nt4z3fGUvrC0MaBIlZoa6SeCGA6ZrReOKBbhX-wgJtksTGNmGqR9SM9dZpN13_Nhhks7wJPwvxtOrFhQIpEPv0g&usqp=CAc" alt="Puma Future" onclick="goToProduct('Puma Future')">
+      <img src="picture/Nike Mercurial.jpg" alt="Nike Mercurial" onclick="goToProduct('Nike Mercurial')">
+      <img src="picture/Adidas Predator.jpg" alt="Adidas Predator" onclick="goToProduct('Adidas Predator')">
+      <img src="picture/Puma Future Match.jpg" alt="Puma Future" onclick="goToProduct('Puma Future')">
     </div>
   </section>
   <section><h2>Khách hàng nói gì</h2>
@@ -59,7 +78,7 @@
   </section>
   <footer><p>&copy; 2025 Giày Bóng Đá Chính Hãng. All rights reserved.</p></footer>
 
-  <script>
+    <script>
     function goToProduct(name) {
       const encoded = encodeURIComponent(name);
       window.location.href = `football.html?name=${encoded}`;
@@ -67,6 +86,7 @@
   </script>
 
   <script>
+
   function goToProduct(name) {
     const encoded = encodeURIComponent(name);
     window.location.href = `football.html?name=${encoded}`;
@@ -82,20 +102,32 @@
     }
   }
 </script>
-
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-const keyword = urlParams.get("search");
+  document.addEventListener("DOMContentLoaded", function () {
+  const loginLink = document.getElementById("loginLink");
+  const logoutLink = document.getElementById("logoutLink");
+  const userGreeting = document.getElementById("userGreeting");
+  const loggedInUser = localStorage.getItem("loggedInUser");
 
-if (keyword) {
-  const filteredShoes = footballShoes.filter(shoe =>
-    shoe.name.toLowerCase().includes(keyword.toLowerCase())
-  );
-  renderShoes(filteredShoes);
-} else {
-  renderShoes(footballShoes);
-}
+  if (loggedInUser) {
+    if (loginLink) loginLink.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "inline-block";
+    if (userGreeting) {
+      userGreeting.textContent = `Xin chào, ${loggedInUser}`;
+      userGreeting.style.display = "inline-block";
+    }
+
+    logoutLink.addEventListener("click", function () {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload(); // Làm mới trang sau khi đăng xuất
+    });
+  }
+});
+
 
 </script>
+
+
+
 </body>
 </html>

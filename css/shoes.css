@@ -17,7 +17,7 @@ nav {
   background-color: #004d40;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
   padding: 0.5rem;
 }
 
@@ -29,7 +29,7 @@ nav a {
 
 .shoes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
   max-width: 1200px;
@@ -39,6 +39,7 @@ nav a {
 .shoe-card {
   background: white;
   border-radius: 10px;
+  border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 1rem;
   text-align: center;
@@ -50,9 +51,18 @@ nav a {
 }
 
 .shoe-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.shoe-card select,
+.shoe-card input[type="number"] {
+  margin: 0.3rem 0;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .shoe-card button {
@@ -67,27 +77,4 @@ nav a {
 
 .shoe-card button:hover {
   background-color: #004d40;
-}
-
-.shoe-card img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-.shoe-card {
-  width: 260px;
-  border: 1px solid #ddd;
-  margin: 10px;
-  padding: 15px;
-  text-align: center;
-  display: inline-block;
-}
-
-.shoe-card img {
-  width: 100%;
-  height: 400px;
-  object-fit: contain;
 }

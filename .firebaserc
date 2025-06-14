@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "giaybongda-b5264",
-    "firebase deploy": "giay-2c25b"
+    "default": "giay1-8b6ec",
+    "firebase deploy": "shopgiay-80aa6"
   },
   "targets": {},
   "etags": {}

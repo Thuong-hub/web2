@@ -17,12 +17,33 @@ header h1 {
   color: #ffffff;
 }
 
+h3 {
+  text-align: left;
+  line-height: 1.6;
+  word-spacing: 0.1em;
+  width: 90%;
+  margin: auto; 
+
+}
+
+h4 {
+  line-height: 1.6;
+  word-spacing: 0.1em;
+  width: 90%;
+  margin: auto;
+}
+
 nav {
-  background-color: #003d33;
+  background: #003d33;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 1rem;
 }
 
 nav a {
@@ -31,6 +52,13 @@ nav a {
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+
+#userGreeting {
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
 
 .hero {
   display: flex;
